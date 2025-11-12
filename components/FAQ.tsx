@@ -1,10 +1,73 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+
+const FAQItem = memo(({ faq, index, isInView, openIndex, toggleFAQ }: any) => {
+  const isOpen = openIndex === index;
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <motion.button
+        onClick={() => toggleFAQ(index)}
+        className="w-full glass-effect glass-border rounded-2xl p-6 text-left group hover:bg-white/5 transition-colors"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <h3 className="text-lg font-semibold text-white group-hover:text-[#378268] transition-colors pr-4">
+            {faq.question}
+          </h3>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex-shrink-0 w-8 h-8 rounded-full glass-effect glass-border flex items-center justify-center"
+          >
+            <svg
+              className="w-5 h-5 text-[#378268]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </motion.div>
+        </div>
+
+        {/* Use max-height instead of height for better performance */}
+        <motion.div
+          initial={false}
+          animate={{
+            maxHeight: isOpen ? 500 : 0,
+            opacity: isOpen ? 1 : 0,
+            marginTop: isOpen ? 16 : 0
+          }}
+          transition={{ 
+            duration: 0.3,
+            ease: "easeInOut"
+          }}
+          className="overflow-hidden"
+        >
+          <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
+        </motion.div>
+      </motion.button>
+    </motion.div>
+  );
+});
+
+FAQItem.displayName = 'FAQItem';
 
 export default function FAQ() {
   const t = useTranslations('FAQ');
@@ -75,58 +138,14 @@ export default function FAQ() {
 
         <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div
+            <FAQItem
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <motion.button
-                onClick={() => toggleFAQ(index)}
-                className="w-full glass-effect glass-border rounded-2xl p-6 text-left group hover:bg-white/5 transition-colors"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-lg font-semibold text-white group-hover:text-[#378268] transition-colors pr-4">
-                    {faq.question}
-                  </h3>
-                  <motion.div
-                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 w-8 h-8 rounded-full glass-effect glass-border flex items-center justify-center"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#378268]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </motion.div>
-                </div>
-
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
-                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            </motion.div>
+              faq={faq}
+              index={index}
+              isInView={isInView}
+              openIndex={openIndex}
+              toggleFAQ={toggleFAQ}
+            />
           ))}
         </div>
 

@@ -1,22 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
-export default function Navigation() {
+const Navigation = memo(function Navigation() {
   const t = useTranslations('Navigation');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      // Trigger scroll state after scrolling past hero section (approximately)
-      setScrolled(window.scrollY > 600);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 600);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -33,18 +39,20 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-500`}
+      className="fixed top-4 left-0 right-0 z-50 flex justify-center"
     >
+      {/* Use transform: scale instead of padding/max-width for GPU acceleration */}
       <motion.div 
         animate={{
-          maxWidth: scrolled ? '900px' : '1400px',
-          paddingLeft: scrolled ? '24px' : '48px',
-          paddingRight: scrolled ? '24px' : '48px',
+          scale: scrolled ? 0.7 : 1,
         }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
-        className={`transition-all duration-500 w-full ${
+        className={`w-full max-w-[1400px] ${
           scrolled ? 'backdrop-blur-xl bg-black/50' : 'backdrop-blur-md bg-black/30'
-        } border border-white/10 rounded-lg py-3 mx-4`}
+        } border border-white/10 rounded-lg py-3 mx-4 px-12 transition-colors duration-500`}
+        style={{ 
+          willChange: 'transform'
+        }}
       >
         <div className={`flex items-center transition-all duration-500 ${
           scrolled ? 'gap-8' : 'gap-16'
@@ -157,4 +165,6 @@ export default function Navigation() {
       </motion.div>
     </motion.nav>
   );
-}
+});
+
+export default Navigation;

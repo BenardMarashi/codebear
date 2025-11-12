@@ -1,13 +1,13 @@
 'use client';
 
-import React from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import React, { memo } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
-// MacOS Window Component - Compact version
-const MacWindow = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
+// MacOS Window Component - Optimized
+const MacWindow = memo(({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
   <div className={`relative rounded-lg overflow-hidden border ${className}`}
     style={{
       backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -15,7 +15,6 @@ const MacWindow = ({ children, className = '' }: { children: React.ReactNode, cl
       borderColor: 'rgba(255, 255, 255, 0.1)'
     }}
   >
-    {/* MacOS Title Bar - Smaller */}
     <div className="h-6 flex items-center px-2.5 gap-1.5"
       style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
     >
@@ -23,15 +22,16 @@ const MacWindow = ({ children, className = '' }: { children: React.ReactNode, cl
       <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
       <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
     </div>
-    {/* Window Content - Reduced padding */}
     <div className="p-4">
       {children}
     </div>
   </div>
-);
+));
 
-// Enhanced Bar Chart Component with more animations
-const AnimatedBarChart = () => {
+MacWindow.displayName = 'MacWindow';
+
+// Optimized Bar Chart - CSS animations for GPU acceleration
+const AnimatedBarChart = memo(() => {
   const bars = [
     { height: 75, color: 'bg-[#285E4B]/70', delay: 0 },
     { height: 45, color: 'bg-[#378268]/60', delay: 0.15 },
@@ -41,30 +41,30 @@ const AnimatedBarChart = () => {
 
   return (
     <div className="space-y-3">
-      {/* Bar Chart */}
       <div className="flex items-end justify-between h-14 gap-1.5">
         {bars.map((bar, index) => (
           <div key={index} className="flex-1 flex flex-col justify-end">
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ 
-                height: [`${bar.height * 0.3}%`, `${bar.height}%`, `${bar.height * 0.6}%`, `${bar.height}%`],
-                opacity: [0, 1, 0.8, 1]
+                height: `${bar.height}%`,
+                opacity: 1
               }}
               transition={{
-                duration: 2,
+                duration: 0.8,
                 delay: bar.delay,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut"
+                ease: "easeOut"
               }}
               className={`w-full ${bar.color} rounded-t`}
+              style={{
+                animation: `barPulse 2s ease-in-out ${bar.delay}s infinite`,
+                transformOrigin: 'bottom'
+              }}
             />
           </div>
         ))}
       </div>
       
-      {/* Animated text lines below chart */}
       <div className="space-y-1.5">
         {[60, 80, 70].map((width, i) => (
           <motion.div
@@ -72,137 +72,106 @@ const AnimatedBarChart = () => {
             initial={{ width: 0, opacity: 0 }}
             animate={{ 
               width: `${width}%`,
-              opacity: [0, 0.7, 0.7, 0]
+              opacity: 1
             }}
             transition={{
-              duration: 3,
-              delay: i * 0.2,
-              repeat: Infinity,
-              repeatDelay: 1,
-              ease: "easeInOut"
+              duration: 0.6,
+              delay: i * 0.15,
+              ease: "easeOut"
             }}
             className="h-1 bg-white/10 rounded"
+            style={{
+              animation: `textFade 3s ease-in-out ${i * 0.2}s infinite`
+            }}
           />
         ))}
       </div>
     </div>
   );
-};
+});
 
-// Enhanced Target/Gauge Component with more rings and animations
-const TargetGauge = () => {
+AnimatedBarChart.displayName = 'AnimatedBarChart';
+
+// Optimized Target/Gauge - CSS animations for smooth performance
+const TargetGauge = memo(() => {
   return (
     <div className="relative w-16 h-16">
-      {/* Multiple animated circles */}
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.4, 0.1, 0.4],
-        }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      {/* Multiple animated circles - CSS animations */}
+      <div
         className="absolute inset-0 border-2 border-[#378268]/30 rounded-full"
+        style={{
+          animation: 'gaugePulse1 2.5s ease-in-out infinite'
+        }}
       />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.6, 0.2, 0.6],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.2
-        }}
+      <div
         className="absolute inset-1 border-2 border-[#378268]/40 rounded-full"
+        style={{
+          animation: 'gaugePulse2 2s ease-in-out infinite'
+        }}
       />
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.8, 0.3, 0.8],
-        }}
-        transition={{
-          duration: 1.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.4
-        }}
+      <div
         className="absolute inset-2 border-2 border-[#46A684]/50 rounded-full"
+        style={{
+          animation: 'gaugePulse3 1.8s ease-in-out infinite'
+        }}
       />
       
       {/* Rotating arc */}
-      <motion.div
-        animate={{
-          rotate: 360
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "linear"
-        }}
+      <div
         className="absolute inset-0"
+        style={{
+          animation: 'gaugeRotate 4s linear infinite'
+        }}
       >
         <div className="w-full h-full border-2 border-transparent border-t-[#285E4B] rounded-full" />
-      </motion.div>
+      </div>
       
       {/* Center pulsing dot */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{
-            scale: [1, 1.4, 1],
-            opacity: [1, 0.6, 1]
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+        <div
           className="w-2.5 h-2.5 bg-[#285E4B] rounded-full shadow-lg shadow-[#285E4B]/50"
+          style={{
+            animation: 'centerPulse 1.5s ease-in-out infinite'
+          }}
         />
       </div>
       
-      {/* Small orbiting dots */}
+      {/* Orbiting dots */}
       {[0, 120, 240].map((angle, i) => (
-        <motion.div
+        <div
           key={i}
-          animate={{
-            rotate: 360
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear",
-            delay: i * 0.3
-          }}
           className="absolute inset-0"
+          style={{
+            animation: `orbitRotate 3s linear infinite`,
+            animationDelay: `${i * 0.3}s`
+          }}
         >
           <div 
             className="absolute w-1 h-1 bg-[#46A684] rounded-full"
             style={{
               top: '50%',
               left: '50%',
-              transform: `translate(-50%, -50%) translateY(-24px)`
+              transform: 'translate(-50%, -50%) translateY(-24px)'
             }}
           />
-        </motion.div>
+        </div>
       ))}
     </div>
   );
-};
+});
 
-// Enhanced Code Animation Component
-const CodeAnimation = () => {
+TargetGauge.displayName = 'TargetGauge';
+
+// Optimized Code Animation - CSS animations for typing effect
+const CodeAnimation = memo(() => {
   const codeLines = [
-    { text: 'Sampling(ayers.Layer):', color: 'text-[#46A684]', width: 85 },
-    { text: '"""Uses mean, log_var to sample z..."""', color: 'text-gray-500', width: 95 },
-    { text: '', color: '', width: 0 },
-    { text: 'call(self, inputs):', color: 'text-blue-400', width: 70 },
-    { text: '  mean, log_var = inputs', color: 'text-gray-300', width: 80 },
-    { text: '  batch = tf.shape(mean)[0]', color: 'text-gray-300', width: 85 },
-    { text: '  dim = tf.shape(mean)[1]', color: 'text-gray-300', width: 82 },
+    { text: 'Sampling(ayers.Layer):', color: 'text-[#46A684]', width: 85, delay: 0 },
+    { text: '"""Uses mean, log_var to sample z..."""', color: 'text-gray-500', width: 95, delay: 0.6 },
+    { text: '', color: '', width: 0, delay: 0 },
+    { text: 'call(self, inputs):', color: 'text-blue-400', width: 70, delay: 1.2 },
+    { text: '  mean, log_var = inputs', color: 'text-gray-300', width: 80, delay: 1.5 },
+    { text: '  batch = tf.shape(mean)[0]', color: 'text-gray-300', width: 85, delay: 1.8 },
+    { text: '  dim = tf.shape(mean)[1]', color: 'text-gray-300', width: 82, delay: 2.1 },
   ];
 
   return (
@@ -211,74 +180,60 @@ const CodeAnimation = () => {
         <motion.div
           key={i}
           initial={{ opacity: 0, x: -10 }}
-          animate={{ 
-            opacity: [0, 1, 1, 0.7],
-            x: [-10, 0]
-          }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ 
-            duration: 0.6,
+            duration: 0.4,
             delay: i * 0.15,
-            repeat: Infinity,
-            repeatDelay: 3
           }}
           className="flex items-center gap-2"
         >
           {line.width > 0 && (
             <>
-              <motion.div
-                animate={{
-                  opacity: [0, 1, 1, 0]
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: i * 0.15,
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
+              <div 
                 className="text-[#378268]"
+                style={{
+                  animation: `cursorBlink 0.8s ease-in-out ${line.delay}s 3`
+                }}
               >
                 {'>'}
-              </motion.div>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ 
-                  width: `${line.width}%`
+              </div>
+              <div
+                className={`overflow-hidden whitespace-nowrap ${line.color}`}
+                style={{
+                  animation: `typeWriter 0.8s steps(${Math.floor(line.text.length / 2)}) ${line.delay}s forwards`,
+                  width: 0,
+                  maxWidth: `${line.width}%`
                 }}
-                transition={{ 
-                  duration: 0.8,
-                  delay: i * 0.15 + 0.2,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  ease: "easeOut"
-                }}
-                className="overflow-hidden whitespace-nowrap"
               >
-                <span className={line.color}>{line.text}</span>
-              </motion.div>
-              {/* Blinking cursor at the end */}
-              {i === codeLines.length - 1 && (
-                <motion.div
-                  animate={{
-                    opacity: [0, 1, 1, 0]
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    repeatDelay: 0
-                  }}
-                  className="w-1 h-3 bg-[#378268]"
-                />
-              )}
+                {line.text}
+              </div>
             </>
           )}
         </motion.div>
       ))}
+      {/* Blinking cursor at the end */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.4 }}
+        className="flex items-center gap-2"
+      >
+        <div className="text-[#378268]">{'>'}</div>
+        <div 
+          className="w-1 h-3 bg-[#378268]"
+          style={{
+            animation: 'cursorBlink 0.8s ease-in-out infinite'
+          }}
+        />
+      </motion.div>
     </div>
   );
-};
+});
 
-// Status Panel Component - Compact
-const StatusPanel = () => {
+CodeAnimation.displayName = 'CodeAnimation';
+
+// Status Panel - Simplified
+const StatusPanel = memo(() => {
   const statuses = [
     { label: 'Security', icon: '🛡️' },
     { label: 'Efficiency', icon: '⚡' },
@@ -293,7 +248,7 @@ const StatusPanel = () => {
           key={status.label}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.1, repeat: Infinity, repeatDelay: 3 }}
+          transition={{ delay: index * 0.1 }}
           className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs ${
             index === 1 ? 'bg-white/20' : 'bg-white/5'
           }`}
@@ -306,10 +261,12 @@ const StatusPanel = () => {
       ))}
     </div>
   );
-};
+});
 
-// Updating Status Component - Smaller
-const UpdatingStatus = () => {
+StatusPanel.displayName = 'StatusPanel';
+
+// Updating Status - Simplified
+const UpdatingStatus = memo(() => {
   return (
     <div className="flex flex-col items-center gap-2">
       <motion.div
@@ -345,9 +302,11 @@ const UpdatingStatus = () => {
       <p className="text-xs text-white/70">Updating...</p>
     </div>
   );
-};
+});
 
-const ProcessCard = ({ step, index, isInView }: any) => {
+UpdatingStatus.displayName = 'UpdatingStatus';
+
+const ProcessCard = memo(({ step, index, isInView }: any) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -369,24 +328,17 @@ const ProcessCard = ({ step, index, isInView }: any) => {
           borderColor: 'rgba(255, 255, 255, 0.1)'
         }}
       >
-        {/* Background Glow Animation - Only on Hover */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className="absolute inset-0 z-0"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1.5 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              style={{
-                background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.2) 0%, transparent 60%)',
-              }}
-            />
-          )}
-        </AnimatePresence>
+        {/* Simplified hover effect - only opacity for performance */}
+        {isHovered && (
+          <div
+            className="absolute inset-0 z-0 opacity-20"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.6) 0%, transparent 60%)',
+            }}
+          />
+        )}
 
         <div className="relative z-10 flex flex-col h-full space-y-6">
-          {/* Animated Window - Compact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -395,7 +347,6 @@ const ProcessCard = ({ step, index, isInView }: any) => {
             {step.component}
           </motion.div>
 
-          {/* Title and Description */}
           <div className="flex-grow">
             <h3 
               className="text-2xl font-bold mb-4 transition-colors"
@@ -429,12 +380,14 @@ const ProcessCard = ({ step, index, isInView }: any) => {
       )}
     </motion.div>
   );
-};
+});
+
+ProcessCard.displayName = 'ProcessCard';
 
 export default function Process() {
   const t = useTranslations('Process');
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const steps = [
     {

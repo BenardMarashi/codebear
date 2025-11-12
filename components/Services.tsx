@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { memo } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Code, Bot, BrainCircuit, Rocket, ShieldCheck, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -89,9 +89,8 @@ const cardVariants = {
   },
 };
 
-// --- SUBCOMPONENTS ---
-
-const ServiceCard = ({ service, index, t }: { service: Service; index: number; t: any }) => {
+// --- SERVICE CARD - OPTIMIZED WITH MEMO ---
+const ServiceCard = memo(({ service, index, t }: { service: Service; index: number; t: any }) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -107,21 +106,15 @@ const ServiceCard = ({ service, index, t }: { service: Service; index: number; t
       aria-labelledby={`service-title-${service.id}`}
       aria-describedby={`service-desc-${service.id}`}
     >
-      {/* Background Glow Animation */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            className="absolute inset-0 z-0"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1.5 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            style={{
-              background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.2) 0%, transparent 60%)',
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {/* Simplified Background Glow - Only opacity for performance */}
+      {isHovered && (
+        <div
+          className="absolute inset-0 z-0 opacity-20"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.6) 0%, transparent 60%)',
+          }}
+        />
+      )}
 
       {/* Card Content */}
       <div className="relative z-10 flex h-full flex-col p-6 sm:p-8">
@@ -187,7 +180,9 @@ const ServiceCard = ({ service, index, t }: { service: Service; index: number; t
       </div>
     </motion.div>
   );
-};
+});
+
+ServiceCard.displayName = 'ServiceCard';
 
 // --- MAIN COMPONENT ---
 export default function Services() {

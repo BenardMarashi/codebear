@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { memo } from 'react';
+import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
-function AnimatedCounter({ end, duration = 2, suffix = '', prefix = '' }: { end: number; duration?: number; suffix?: string; prefix?: string }) {
+// Optimized AnimatedCounter with proper cleanup
+const AnimatedCounter = memo(({ end, duration = 2, suffix = '', prefix = '' }: { end: number; duration?: number; suffix?: string; prefix?: string }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -14,12 +15,13 @@ function AnimatedCounter({ end, duration = 2, suffix = '', prefix = '' }: { end:
   useEffect(() => {
     if (!isInView) return;
 
-    let startTime: number;
     let animationFrame: number;
+    const startTime = Date.now();
+    const endTime = startTime + duration * 1000;
 
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / (duration * 1000);
+    const animate = () => {
+      const now = Date.now();
+      const progress = Math.min((now - startTime) / (duration * 1000), 1);
 
       if (progress < 1) {
         setCount(Math.floor(end * progress));
@@ -31,13 +33,17 @@ function AnimatedCounter({ end, duration = 2, suffix = '', prefix = '' }: { end:
 
     animationFrame = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationFrame);
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
   }, [isInView, end, duration]);
 
   return <span ref={ref}>{prefix}{count}{suffix}</span>;
-}
+});
 
-const BenefitCard = ({ benefit, index, isInView, t }: any) => {
+AnimatedCounter.displayName = 'AnimatedCounter';
+
+const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -58,24 +64,18 @@ const BenefitCard = ({ benefit, index, isInView, t }: any) => {
           borderColor: 'rgba(255, 255, 255, 0.1)'
         }}
       >
-        {/* Background Glow Animation - Only on Hover */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className="absolute inset-0 z-0"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1.5 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              style={{
-                background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.2) 0%, transparent 60%)',
-              }}
-            />
-          )}
-        </AnimatePresence>
+        {/* Simplified hover effect - only opacity */}
+        {isHovered && (
+          <div
+            className="absolute inset-0 z-0 opacity-20"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.6) 0%, transparent 60%)',
+            }}
+          />
+        )}
 
         <div className="relative z-10">
-          {/* Icon Container - Simplified */}
+          {/* Icon Container */}
           <div
             className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 border"
             style={{
@@ -141,7 +141,9 @@ const BenefitCard = ({ benefit, index, isInView, t }: any) => {
       </motion.div>
     </motion.div>
   );
-};
+});
+
+BenefitCard.displayName = 'BenefitCard';
 
 export default function Benefits() {
   const t = useTranslations('Benefits');
