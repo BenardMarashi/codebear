@@ -1,28 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
-const Navigation = memo(function Navigation() {
+export default function Navigation() {
   const t = useTranslations('Navigation');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 600);
-          ticking = false;
-        });
-        ticking = true;
-      }
+      // Trigger scroll state after scrolling past hero section (approximately)
+      setScrolled(window.scrollY > 600);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -39,22 +33,20 @@ const Navigation = memo(function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-4 left-0 right-0 z-50 flex justify-center"
+      className={`fixed top-4 left-0 right-0 z-50 flex justify-center transition-all duration-300`}
     >
-      {/* Use transform: scale instead of padding/max-width for GPU acceleration */}
       <motion.div 
         animate={{
-          scale: scrolled ? 0.7 : 1,
+          maxWidth: scrolled ? '900px' : '1400px',
+          paddingLeft: scrolled ? '24px' : '48px',
+          paddingRight: scrolled ? '24px' : '48px',
         }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
-        className={`w-full max-w-[1400px] ${
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className={`transition-all duration-300 w-full ${
           scrolled ? 'backdrop-blur-xl bg-black/50' : 'backdrop-blur-md bg-black/30'
-        } border border-white/10 rounded-lg py-3 mx-4 px-12 transition-colors duration-500`}
-        style={{ 
-          willChange: 'transform'
-        }}
+        } border border-white/10 rounded-lg py-3 mx-4`}
       >
-        <div className={`flex items-center transition-all duration-500 ${
+        <div className={`flex items-center transition-all duration-300 ${
           scrolled ? 'gap-8' : 'gap-16'
         }`}>
           {/* Logo */}
@@ -70,7 +62,7 @@ const Navigation = memo(function Navigation() {
           </Link>
 
           {/* Desktop Navigation - Center */}
-          <div className={`hidden md:flex items-center flex-1 justify-center transition-all duration-500 ${
+          <div className={`hidden md:flex items-center flex-1 justify-center transition-all duration-300 ${
             scrolled ? 'gap-1' : 'gap-8'
           }`}>
             {navLinks.map((link, index) => (
@@ -165,6 +157,4 @@ const Navigation = memo(function Navigation() {
       </motion.div>
     </motion.nav>
   );
-});
-
-export default Navigation;
+}
