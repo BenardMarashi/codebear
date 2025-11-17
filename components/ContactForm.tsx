@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-
+import { addContactSubmission } from '@/lib/admin/firestore';
 export default function ContactForm() {
   const t = useTranslations('Contact');
   const ref = useRef(null);
@@ -23,7 +23,17 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('sending');
     
-    setTimeout(() => {
+    try {
+      // Save to Firestore
+      await addContactSubmission({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+      });
+
       setStatus('success');
       setFormData({
         name: '',
@@ -35,7 +45,11 @@ export default function ContactForm() {
       });
       
       setTimeout(() => setStatus('idle'), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
