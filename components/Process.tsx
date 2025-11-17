@@ -10,7 +10,7 @@ import { Link } from '@/i18n/routing';
 const MacWindow = memo(({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
   <div className={`relative rounded-lg overflow-hidden border ${className}`}
     style={{
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      backgroundColor: 'rgba(255, 255, 255, 0.12)',
       backdropFilter: 'blur(12px)',
       borderColor: 'rgba(255, 255, 255, 0.1)'
     }}
@@ -324,7 +324,7 @@ const ProcessCard = memo(({ step, index, isInView }: any) => {
         onHoverEnd={() => setIsHovered(false)}
         className="rounded-3xl p-8 h-full flex flex-col relative overflow-hidden border"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'rgba(255, 255, 255, 0.12)',
           borderColor: 'rgba(255, 255, 255, 0.1)'
         }}
       >

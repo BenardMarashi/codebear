@@ -60,7 +60,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
         onHoverEnd={() => setIsHovered(false)}
         className="rounded-3xl p-8 h-full relative overflow-hidden border"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'rgba(255, 255, 255, 0.12)',
           borderColor: 'rgba(255, 255, 255, 0.1)'
         }}
       >
@@ -79,7 +79,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
           <div
             className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 border"
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backgroundColor: 'rgba(255, 255, 255, 0.12)',
               borderColor: 'rgba(255, 255, 255, 0.1)'
             }}
           >
@@ -250,7 +250,7 @@ export default function Benefits() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="rounded-3xl p-8 lg:p-12 border"
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            backgroundColor: 'rgba(255, 255, 255, 0.12)',
             borderColor: 'rgba(255, 255, 255, 0.1)'
           }}
         >
