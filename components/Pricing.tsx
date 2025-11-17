@@ -98,7 +98,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
       variants={cardVariants}
       className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border"
       style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.12)',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
         borderColor: plan.popular ? '#285E4B' : 'rgba(255, 255, 255, 0.1)'
       }}
       onHoverStart={() => setIsHovered(true)}
