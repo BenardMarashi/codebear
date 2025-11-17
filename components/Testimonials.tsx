@@ -51,9 +51,8 @@ export default function Testimonials() {
   };
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#285E4B]/5 rounded-full blur-[150px]" />
+    <section ref={ref} className="relative py-32 overflow-hidden section-green-medium section-overlay-green">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#285E4B]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div

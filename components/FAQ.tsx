@@ -107,11 +107,10 @@ export default function FAQ() {
   };
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-black" />
+    <section ref={ref} className="relative py-32 overflow-hidden section-green-dark section-overlay-green">
       <div className="absolute inset-0 bg-grid-small opacity-20" />
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#285E4B]/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#378268]/10 rounded-full blur-[150px]" />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#285E4B]/15 rounded-full blur-[150px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#378268]/15 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div

@@ -28,8 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer ref={ref} className="relative py-20 overflow-hidden border-t border-white/5">
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-[#0a0a0a]" />
+    <footer ref={ref} className="relative py-20 overflow-hidden border-t section-green-dark section-overlay-green" style={{ borderColor: 'rgba(40, 94, 75, 0.3)' }}>
       
       <div className="relative z-10 section-container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">

@@ -12,20 +12,18 @@ export default function ContactCTA() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black" />
-      
+    <section ref={ref} className="relative py-32 overflow-hidden section-green-medium section-overlay-green">
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.4, 0.6, 0.4],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-r from-[#285E4B]/20 to-[#378268]/20 rounded-full blur-[150px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-r from-[#285E4B]/25 to-[#378268]/25 rounded-full blur-[150px]"
       />
 
       <div className="relative z-10 section-container">

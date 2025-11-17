@@ -285,8 +285,7 @@ export default function Pricing() {
     <section
       ref={ref}
       id="plans"
-      className="py-20 sm:py-24 lg:py-32"
-      style={{ backgroundColor: '#0D0D0D' }}
+      className="py-20 sm:py-24 lg:py-32 section-green-dark section-overlay-green"
       aria-labelledby="pricing-heading"
     >
       <motion.div

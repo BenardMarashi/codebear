@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import GradientBackground from '@/components/Gradientbackground';
 import '../globals.css';
 import '../../components/process-animations.css';
 
@@ -11,7 +12,7 @@ import '../../components/process-animations.css';
 const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Radison - AI Automation Partner',
+  title: 'Code Bear - AI Automation Partner',
   description: 'Transforming workflows with AI powered automation',
 };
 
@@ -38,7 +39,13 @@ export default async function LocaleLayout({
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <body className={outfit.className} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          {/* Global animated background - appears across all pages */}
+          <GradientBackground variant="global" />
+          
+          {/* Page content with relative positioning to appear above background */}
+          <div className="relative z-10">
+            {children}
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

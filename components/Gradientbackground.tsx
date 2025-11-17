@@ -3,7 +3,7 @@
 import { memo } from 'react';
 
 interface GradientBackgroundProps {
-  variant?: 'default' | 'hero' | 'section' | 'minimal';
+  variant?: 'default' | 'hero' | 'section' | 'minimal' | 'global';
   className?: string;
 }
 
@@ -12,6 +12,7 @@ interface GradientBackgroundProps {
  * Creates smooth, atmospheric gradient lighting effects throughout your site
  * 
  * Variants:
+ * - global: Site-wide animated background (lighter, more shaded than hero)
  * - hero: Bright, prominent aura lights
  * - default: Balanced aura effect
  * - section: Subtle aura glow
@@ -24,6 +25,114 @@ const GradientBackground = memo(function GradientBackground({
   
   const getAuraForVariant = () => {
     switch (variant) {
+      case 'global':
+        return (
+          <>
+            {/* Main gradient base - lighter than hero */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)'
+              }}
+            />
+
+            {/* Top-left flowing orb - lighter opacity */}
+            <div 
+              className="aura-light"
+              style={{
+                position: 'absolute',
+                top: '-10%',
+                left: '-5%',
+                width: '50%',
+                height: '50%',
+                background: 'radial-gradient(circle, rgba(70, 166, 132, 0.15) 0%, rgba(55, 130, 104, 0.08) 40%, transparent 70%)',
+                filter: 'blur(80px)',
+                animation: 'floatOrb1 25s ease-in-out infinite',
+                opacity: 0.8
+              }}
+            />
+
+            {/* Center large ambient glow - very subtle */}
+            <div 
+              className="aura-light"
+              style={{
+                position: 'absolute',
+                top: '25%',
+                left: '25%',
+                width: '50%',
+                height: '50%',
+                background: 'radial-gradient(ellipse at center, rgba(40, 94, 75, 0.12) 0%, rgba(55, 130, 104, 0.06) 30%, transparent 60%)',
+                filter: 'blur(120px)',
+                animation: 'floatOrb2 30s ease-in-out infinite',
+                opacity: 0.7
+              }}
+            />
+
+            {/* Right side gradient sweep - lighter */}
+            <div 
+              className="aura-light"
+              style={{
+                position: 'absolute',
+                top: '10%',
+                right: '-10%',
+                width: '45%',
+                height: '60%',
+                background: 'radial-gradient(ellipse, rgba(55, 130, 104, 0.14) 0%, rgba(70, 166, 132, 0.07) 35%, transparent 65%)',
+                filter: 'blur(100px)',
+                animation: 'floatOrb3 28s ease-in-out infinite',
+                opacity: 0.75
+              }}
+            />
+
+            {/* Bottom-left accent - subtle green tint */}
+            <div 
+              className="aura-light"
+              style={{
+                position: 'absolute',
+                bottom: '5%',
+                left: '10%',
+                width: '40%',
+                height: '40%',
+                background: 'radial-gradient(circle, rgba(46, 166, 132, 0.1) 0%, rgba(55, 130, 104, 0.05) 40%, transparent 70%)',
+                filter: 'blur(90px)',
+                animation: 'floatOrb4 32s ease-in-out infinite',
+                opacity: 0.65
+              }}
+            />
+
+            {/* Bottom-right gradient - very light */}
+            <div 
+              className="aura-light"
+              style={{
+                position: 'absolute',
+                bottom: '-5%',
+                right: '5%',
+                width: '45%',
+                height: '45%',
+                background: 'radial-gradient(circle, rgba(55, 130, 104, 0.11) 0%, rgba(40, 94, 75, 0.06) 40%, transparent 70%)',
+                filter: 'blur(95px)',
+                animation: 'floatOrb5 27s ease-in-out infinite',
+                opacity: 0.7
+              }}
+            />
+
+            {/* Additional ambient overlay for more depth */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                background: 'radial-gradient(ellipse at 50% 30%, rgba(70, 166, 132, 0.04) 0%, transparent 50%)',
+                opacity: 0.8
+              }}
+            />
+
+            {/* Subtle grid texture */}
+            <div 
+              className="absolute inset-0 bg-grid-small"
+              style={{ opacity: 0.15 }}
+            />
+          </>
+        );
+
       case 'hero':
         return (
           <>
@@ -187,9 +296,12 @@ const GradientBackground = memo(function GradientBackground({
     }
   };
 
+  // For global variant, use fixed positioning
+  const positionClass = variant === 'global' ? 'fixed' : 'absolute';
+
   return (
     <div 
-      className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+      className={`${positionClass} inset-0 overflow-hidden pointer-events-none ${className}`}
       style={{ zIndex: 0 }}
       aria-hidden="true"
     >
