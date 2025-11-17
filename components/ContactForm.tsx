@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { addContactSubmission } from '@/lib/admin/firestore';
+
 export default function ContactForm() {
   const t = useTranslations('Contact');
   const ref = useRef(null);
@@ -18,22 +19,42 @@ export default function ContactForm() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    setErrorMessage('');
+    
+    console.log('📝 Form submission started');
+    console.log('Form data:', formData);
     
     try {
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.message) {
+        throw new Error('Please fill in all required fields');
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        throw new Error('Please enter a valid email address');
+      }
+
+      console.log('📤 Calling addContactSubmission...');
+      
       // Save to Firestore
-      await addContactSubmission({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        phone: formData.phone,
+      const docId = await addContactSubmission({
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        company: formData.company.trim(),
+        phone: formData.phone.trim(),
         service: formData.service,
-        message: formData.message,
+        message: formData.message.trim(),
       });
 
+      console.log('✅ Form submitted successfully! Document ID:', docId);
+      
       setStatus('success');
       setFormData({
         name: '',
@@ -46,9 +67,31 @@ export default function ContactForm() {
       
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('❌ Error submitting form:', error);
+      
+      let userMessage = t('form.errorMessage');
+      
+      if (error instanceof Error) {
+        console.error('Error details:', error.message, error.stack);
+        
+        // Provide more specific error messages
+        if (error.message.includes('required fields')) {
+          userMessage = 'Please fill in all required fields';
+        } else if (error.message.includes('email')) {
+          userMessage = 'Please enter a valid email address';
+        } else if (error.message.includes('permission')) {
+          userMessage = 'Connection error. Please check your internet and try again.';
+        } else if (error.message.includes('not initialized')) {
+          userMessage = 'System error. Please refresh the page and try again.';
+        }
+      }
+      
+      setErrorMessage(userMessage);
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -102,7 +145,8 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t('form.namePlaceholder')}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
                   />
                 </div>
                 <div>
@@ -117,7 +161,8 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t('form.emailPlaceholder')}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -134,7 +179,8 @@ export default function ContactForm() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder={t('form.companyPlaceholder')}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
                   />
                 </div>
                 <div>
@@ -148,7 +194,8 @@ export default function ContactForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder={t('form.phonePlaceholder')}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -162,7 +209,8 @@ export default function ContactForm() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all bg-transparent"
+                  disabled={status === 'sending'}
+                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all bg-transparent disabled:opacity-50"
                 >
                   <option value="" className="bg-black">{t('form.selectService')}</option>
                   <option value="shopify" className="bg-black">{t('form.services.shopify')}</option>
@@ -186,7 +234,8 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder={t('form.messagePlaceholder')}
-                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all resize-none"
+                  disabled={status === 'sending'}
+                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all resize-none disabled:opacity-50"
                 />
               </div>
 
@@ -195,8 +244,11 @@ export default function ContactForm() {
                 disabled={status === 'sending'}
                 whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
                 whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
-                className="w-full btn-primary py-4 text-lg shadow-2xl shadow-[#285E4B]/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-primary py-4 text-lg shadow-2xl shadow-[#285E4B]/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
+                {status === 'sending' && (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                )}
                 {status === 'sending' ? t('form.sending') : t('form.submit')}
               </motion.button>
 
@@ -204,18 +256,31 @@ export default function ContactForm() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 glass-effect glass-border rounded-xl text-center"
+                  className="p-4 glass-effect glass-border rounded-xl text-center bg-green-500/10 border-green-500/20"
                 >
-                  <p className="text-green-400">{t('form.successMessage')}</p>
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-green-400 font-semibold">Success!</p>
+                  </div>
+                  <p className="text-green-300 text-sm">{t('form.successMessage')}</p>
                 </motion.div>
               )}
+              
               {status === 'error' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 glass-effect glass-border rounded-xl text-center"
+                  className="p-4 glass-effect glass-border rounded-xl text-center bg-red-500/10 border-red-500/20"
                 >
-                  <p className="text-red-400">{t('form.errorMessage')}</p>
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="text-red-400 font-semibold">Error</p>
+                  </div>
+                  <p className="text-red-300 text-sm">{errorMessage || t('form.errorMessage')}</p>
                 </motion.div>
               )}
             </form>

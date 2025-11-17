@@ -16,18 +16,33 @@ export default function Dashboard() {
   const router = useRouter();
   const [contacts, setContacts] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    if (user) {
+      loadData();
+    }
+  }, [user]);
 
   const loadData = async () => {
     setLoading(true);
+    setError(null);
+    
+    console.log('🔵 Loading dashboard data...');
+    console.log('User:', user?.email);
+    
     try {
       const contactsData = await getContactSubmissions();
+      console.log('✅ Loaded contacts:', contactsData.length);
       setContacts(contactsData);
     } catch (error) {
-      console.error('Error loading data:', error);
+      console.error('❌ Error loading data:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', error.message, error.stack);
+        setError(error.message);
+      } else {
+        setError('Unknown error occurred');
+      }
     } finally {
       setLoading(false);
     }
@@ -35,44 +50,57 @@ export default function Dashboard() {
 
   const handleSignOut = async () => {
     try {
+      console.log('🔵 Signing out...');
       await signOut();
+      console.log('✅ Signed out successfully');
       router.push('/admin/login');
     } catch (error) {
-      console.error('Error signing out:', error);
+      console.error('❌ Error signing out:', error);
     }
   };
 
   const handleDeleteContact = async (id: string) => {
     if (confirm('Are you sure you want to delete this contact submission?')) {
       try {
+        console.log('🔵 Deleting contact:', id);
         await deleteContactSubmission(id);
         setContacts(contacts.filter(c => c.id !== id));
+        console.log('✅ Contact deleted successfully');
       } catch (error) {
-        console.error('Error deleting contact:', error);
+        console.error('❌ Error deleting contact:', error);
+        alert('Failed to delete contact. Please try again.');
       }
     }
   };
 
   const handleMarkContactRead = async (id: string) => {
     try {
+      console.log('🔵 Marking contact as read:', id);
       await markContactAsRead(id);
       setContacts(contacts.map(c => c.id === id ? { ...c, read: true } : c));
+      console.log('✅ Contact marked as read');
     } catch (error) {
-      console.error('Error marking contact as read:', error);
+      console.error('❌ Error marking contact as read:', error);
+      alert('Failed to mark as read. Please try again.');
     }
   };
 
   const formatDate = (date: Date | any) => {
-    // Handle both Firestore Timestamp and Date objects
-    const dateObj = date instanceof Date ? date : date.toDate();
-    return dateObj.toLocaleDateString('en-US', {
+    try {
+      // Handle both Firestore Timestamp and Date objects
+      const dateObj = date instanceof Date ? date : date.toDate();
+      return dateObj.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
-    });
-    };
+      });
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Invalid date';
+    }
+  };
 
   const unreadContacts = contacts.filter(c => !c.read).length;
 
@@ -167,11 +195,25 @@ export default function Dashboard() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={loadData}
-            className="px-4 py-2 glass-effect glass-border rounded-xl hover:bg-white/5 transition-colors"
+            disabled={loading}
+            className="px-4 py-2 glass-effect glass-border rounded-xl hover:bg-white/5 transition-colors disabled:opacity-50 flex items-center gap-2"
           >
+            {loading && <div className="w-4 h-4 border-2 border-[#285E4B] border-t-transparent rounded-full animate-spin" />}
             🔄 Refresh
           </motion.button>
         </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 glass-effect glass-border rounded-xl bg-red-500/10 border-red-500/20">
+            <div className="flex items-center gap-2 text-red-400">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Error loading data: {error}</span>
+            </div>
+          </div>
+        )}
 
         {/* Content */}
         {loading ? (
@@ -185,6 +227,12 @@ export default function Dashboard() {
               <div className="glass-effect glass-border rounded-2xl p-12 text-center">
                 <p className="text-gray-400 text-lg">No contact submissions yet</p>
                 <p className="text-gray-500 text-sm mt-2">Submissions will appear here when users fill out the contact form</p>
+                <button
+                  onClick={loadData}
+                  className="mt-4 px-6 py-2 btn-primary"
+                >
+                  Check for New Submissions
+                </button>
               </div>
             ) : (
               contacts.map((contact, index) => (
