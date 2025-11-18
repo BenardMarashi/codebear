@@ -39,7 +39,7 @@ export default function Hero() {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none"
         >
-          <div className="w-full h-full rounded-full blur-[150px] bg-[radial-gradient(circle,rgba(40,94,75,0.4)_0%,rgba(55,130,104,0.3)_35%,transparent_70%)]" />
+          <div className="w-full h-full rounded-full blur-[150px] bg-[radial-gradient(circle,rgba(230,255,43,0.4)_0%,rgba(230,255,43,0.3)_35%,transparent_70%)]" />
         </motion.div>
 
         <motion.div
@@ -52,7 +52,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-20 right-20 w-[400px] h-[400px] rounded-full blur-[100px] bg-[radial-gradient(circle,rgba(55,130,104,0.3)_0%,transparent_70%)]"
+          className="absolute top-20 right-20 w-[400px] h-[400px] rounded-full blur-[100px] bg-[radial-gradient(circle,rgba(230,255,43,0.3)_0%,transparent_70%)]"
         />
         
         <motion.div
@@ -66,7 +66,7 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute bottom-20 left-20 w-[500px] h-[500px] rounded-full blur-[120px] bg-[radial-gradient(circle,rgba(70,166,132,0.25)_0%,transparent_70%)]"
+          className="absolute bottom-20 left-20 w-[500px] h-[500px] rounded-full blur-[120px] bg-[radial-gradient(circle,rgba(230,255,43,0.25)_0%,transparent_70%)]"
         />
       </div>
 
