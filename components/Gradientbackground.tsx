@@ -32,7 +32,7 @@ const GradientBackground = memo(function GradientBackground({
             <div 
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)'
+                background: 'linear-gradient(180deg, #0B4650 0%, #0a3d45 50%, #0B4650 100%)'
               }}
             />
 

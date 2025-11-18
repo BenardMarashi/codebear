@@ -406,41 +406,12 @@ a:focus-visible {
   }
 }
 
-/* End Global Background Animations */
-
-/* ========================================
-   GREEN SECTION BACKGROUNDS
-   Matching colors with navigation
-   ======================================== */
-
-.section-green-dark {
-  background: linear-gradient(180deg, #0B4650 0%, #0d3238 50%, #0B4650 100%);
-  position: relative;
-}
-
-.section-green-medium {
-  background: linear-gradient(180deg, #0d3238 0%, #0B4650 50%, #0d3238 100%);
-  position: relative;
-}
-
-.section-green-gradient {
-  background: linear-gradient(135deg, rgba(230, 255, 43, 0.05) 0%, rgba(11, 70, 80, 0.03) 50%, rgba(230, 255, 43, 0.05) 100%);
-  position: relative;
-}
-
-/* Section overlays for depth */
-.section-overlay-green::before {
+/* Transparent sections with subtle overlays */
+.section-overlay-subtle::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top, rgba(230, 255, 43, 0.1) 0%, transparent 50%);
+  background: radial-gradient(ellipse at top, rgba(230, 255, 43, 0.03) 0%, transparent 50%);
   pointer-events: none;
-}
-
-.section-overlay-green::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at bottom, rgba(230, 255, 43, 0.08) 0%, transparent 50%);
-  pointer-events: none;
+  z-index: 1;
 }
