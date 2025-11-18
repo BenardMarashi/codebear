@@ -1,6 +1,6 @@
-import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
-import { getFirestore, Firestore } from 'firebase/firestore';
-import { getAuth, Auth } from 'firebase/auth';
+import { initializeApp, getApps } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
@@ -13,46 +13,19 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase ONLY on client-side
-let app: FirebaseApp | undefined;
-let firestoreDb: Firestore | undefined;
-let firebaseAuth: Auth | undefined;
+// Initialize Firebase (avoid reinitializing)
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-if (typeof window !== 'undefined') {
-  app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-  firestoreDb = getFirestore(app);
-  firebaseAuth = getAuth(app);
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('✅ Firebase initialized on client');
-  }
-}
-
-// Helper functions that throw errors if called on server
-export function getDb(): Firestore {
-  if (!firestoreDb) {
-    throw new Error('Firestore not initialized. Make sure you are on the client side.');
-  }
-  return firestoreDb;
-}
-
-export function getAuthInstance(): Auth {
-  if (!firebaseAuth) {
-    throw new Error('Auth not initialized. Make sure you are on the client side.');
-  }
-  return firebaseAuth;
-}
+// Initialize services
+export const db = getFirestore(app);
+export const auth = getAuth(app);
 
 // Analytics - only initialize on client side
 export const getAnalyticsInstance = () => {
-  if (typeof window !== 'undefined' && app) {
+  if (typeof window !== 'undefined') {
     return getAnalytics(app);
   }
   return null;
 };
-
-// Export the raw instances (can be undefined)
-export const db = firestoreDb;
-export const auth = firebaseAuth;
 
 export default app;
