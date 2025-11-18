@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --primary: #285E4B;
-  --primary-light: #378268;
-  --primary-dark: #0A1612;
-  --secondary: #193A2E;
-  --accent: #46A684;
-  --background: #000000;
-  --foreground: #ffffff;
+  --primary: #E6FF2B;
+  --primary-light: #F3FF7A;
+  --primary-dark: #C4D922;
+  --secondary: #0B4650;
+  --accent: #E6FF2B;
+  --background: #0B4650;
+  --foreground: #F9F7F2;
 }
 
 * {
@@ -38,7 +38,7 @@ body {
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #285E4B 0%, #193A2E 50%, #46A684 100%);
+    background-image: linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%);
   }
 
   .glass-effect {
@@ -70,12 +70,12 @@ body {
 
   .btn-primary {
     @apply px-8 py-4 rounded-full font-semibold text-white transition-all duration-300;
-    background: linear-gradient(135deg, #285E4B 0%, #193A2E 100%);
+    background: linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(40, 94, 75, 0.4);
+    box-shadow: 0 20px 40px rgba(230, 255, 43, 0.4);
   }
 
   .btn-secondary {
@@ -91,15 +91,15 @@ body {
 
 .bg-grid {
   background-image: 
-    linear-gradient(rgba(40, 94, 75, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(40, 94, 75, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(230, 255, 43, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 70, 80, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 .bg-grid-small {
   background-image: 
-    linear-gradient(rgba(40, 94, 75, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(40, 94, 75, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(11, 70, 80, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 70, 80, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -116,9 +116,9 @@ body {
   animation: shimmer 2s infinite;
   background: linear-gradient(
     to right,
-    rgba(40, 94, 75, 0.1) 0%,
-    rgba(40, 94, 75, 0.2) 50%,
-    rgba(40, 94, 75, 0.1) 100%
+    rgba(11, 70, 80, 0.1) 0%,
+    rgba(11, 70, 80, 0.2) 50%,
+    rgba(11, 70, 80, 0.1) 100%
   );
   background-size: 1000px 100%;
 }
@@ -324,12 +324,12 @@ a:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #285E4B 0%, #193A2E 100%);
+  background: linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #378268 0%, #46A684 100%);
+  background: linear-gradient(135deg, #F3FF7A 0%, #E6FF2B 100%);
 }
 
 /* ========================================
@@ -414,17 +414,17 @@ a:focus-visible {
    ======================================== */
 
 .section-green-dark {
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d1410 50%, #0a0a0a 100%);
+  background: linear-gradient(180deg, #0B4650 0%, #0d3238 50%, #0B4650 100%);
   position: relative;
 }
 
 .section-green-medium {
-  background: linear-gradient(180deg, #0d1410 0%, #0a0a0a 50%, #0d1410 100%);
+  background: linear-gradient(180deg, #0d3238 0%, #0B4650 50%, #0d3238 100%);
   position: relative;
 }
 
 .section-green-gradient {
-  background: linear-gradient(135deg, rgba(40, 94, 75, 0.05) 0%, rgba(25, 58, 46, 0.03) 50%, rgba(40, 94, 75, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(230, 255, 43, 0.05) 0%, rgba(11, 70, 80, 0.03) 50%, rgba(230, 255, 43, 0.05) 100%);
   position: relative;
 }
 
@@ -433,7 +433,7 @@ a:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top, rgba(40, 94, 75, 0.1) 0%, transparent 50%);
+  background: radial-gradient(ellipse at top, rgba(230, 255, 43, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -441,6 +441,6 @@ a:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at bottom, rgba(55, 130, 104, 0.08) 0%, transparent 50%);
+  background: radial-gradient(ellipse at bottom, rgba(230, 255, 43, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }

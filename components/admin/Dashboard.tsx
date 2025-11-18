@@ -111,7 +111,7 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#285E4B] to-[#378268] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#E6FF2B] to-[#F3FF7A] rounded-xl flex items-center justify-center">
                 <span className="text-2xl">🐻</span>
               </div>
               <div>
@@ -149,7 +149,7 @@ export default function Dashboard() {
               </div>
             </div>
             {unreadContacts > 0 && (
-              <p className="text-sm text-[#378268] mt-2">{unreadContacts} unread</p>
+              <p className="text-sm text-[#F3FF7A] mt-2">{unreadContacts} unread</p>
             )}
           </motion.div>
 
@@ -198,7 +198,7 @@ export default function Dashboard() {
             disabled={loading}
             className="px-4 py-2 glass-effect glass-border rounded-xl hover:bg-white/5 transition-colors disabled:opacity-50 flex items-center gap-2"
           >
-            {loading && <div className="w-4 h-4 border-2 border-[#285E4B] border-t-transparent rounded-full animate-spin" />}
+            {loading && <div className="w-4 h-4 border-2 border-[#E6FF2B] border-t-transparent rounded-full animate-spin" />}
             🔄 Refresh
           </motion.button>
         </div>
@@ -218,7 +218,7 @@ export default function Dashboard() {
         {/* Content */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="w-16 h-16 border-4 border-[#285E4B] border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <div className="w-16 h-16 border-4 border-[#E6FF2B] border-t-transparent rounded-full animate-spin mx-auto"></div>
             <p className="text-gray-400 mt-4">Loading...</p>
           </div>
         ) : (
@@ -242,14 +242,14 @@ export default function Dashboard() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className={`glass-effect glass-border rounded-2xl p-6 hover:bg-white/5 transition-all ${
-                    !contact.read ? 'border-[#378268] bg-[#378268]/5' : ''
+                    !contact.read ? 'border-[#F3FF7A] bg-[#F3FF7A]/5' : ''
                   }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
                         {!contact.read && (
-                          <span className="px-2 py-1 bg-[#378268]/20 text-[#378268] text-xs font-semibold rounded">
+                          <span className="px-2 py-1 bg-[#F3FF7A]/20 text-[#F3FF7A] text-xs font-semibold rounded">
                             NEW
                           </span>
                         )}
@@ -261,7 +261,7 @@ export default function Dashboard() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 text-sm">
                         <div>
                           <span className="text-gray-400">Email:</span>
-                          <a href={`mailto:${contact.email}`} className="ml-2 text-[#378268] hover:underline">
+                          <a href={`mailto:${contact.email}`} className="ml-2 text-[#F3FF7A] hover:underline">
                             {contact.email}
                           </a>
                         </div>
@@ -274,7 +274,7 @@ export default function Dashboard() {
                         {contact.phone && (
                           <div>
                             <span className="text-gray-400">Phone:</span>
-                            <a href={`tel:${contact.phone}`} className="ml-2 text-[#378268] hover:underline">
+                            <a href={`tel:${contact.phone}`} className="ml-2 text-[#F3FF7A] hover:underline">
                               {contact.phone}
                             </a>
                           </div>
@@ -293,7 +293,7 @@ export default function Dashboard() {
                       {!contact.read && (
                         <button
                           onClick={() => handleMarkContactRead(contact.id!)}
-                          className="px-4 py-2 bg-[#378268]/20 text-[#378268] text-sm rounded-lg hover:bg-[#378268]/30 transition-colors whitespace-nowrap"
+                          className="px-4 py-2 bg-[#F3FF7A]/20 text-[#F3FF7A] text-sm rounded-lg hover:bg-[#F3FF7A]/30 transition-colors whitespace-nowrap"
                         >
                           Mark Read
                         </button>

@@ -92,8 +92,8 @@ export default function Hero() {
               }}
               className="w-2 h-2 rounded-full"
               style={{
-                background: 'linear-gradient(135deg, #285E4B 0%, #193A2E 100%)',
-                boxShadow: '0 0 10px rgba(40, 94, 75, 0.6)',
+                background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%)',
+                boxShadow: '0 0 10px rgba(11, 70, 80, 0.6)',
               }}
             />
             <span className="text-sm text-gray-300 font-medium">{t('badge')}</span>
@@ -125,7 +125,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-primary min-w-[220px] text-lg shadow-2xl shadow-[#285E4B]/30"
+              className="btn-primary min-w-[220px] text-lg shadow-2xl shadow-[#E6FF2B]/30"
             >
               {t('getStarted')}
             </motion.button>

@@ -57,13 +57,13 @@ export default function StarField() {
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(40, 94, 75, ${star.opacity})`;
+        ctx.fillStyle = `rgba(11, 70, 80, ${star.opacity})`;
         ctx.fill();
 
         if (star.size > 1) {
           ctx.beginPath();
           ctx.arc(star.x, star.y, star.size * 2, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(55, 130, 104, ${star.opacity * 0.3})`;
+          ctx.fillStyle = `rgba(230, 255, 43, ${star.opacity * 0.3})`;
           ctx.fill();
         }
       });

@@ -111,7 +111,7 @@ const ServiceCard = memo(({ service, index, t }: { service: Service; index: numb
         <div
           className="absolute inset-0 z-0 opacity-20"
           style={{
-            background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.6) 0%, transparent 60%)',
+            background: 'radial-gradient(circle at center, rgba(11, 70, 80, 0.6) 0%, transparent 60%)',
           }}
         />
       )}
@@ -206,7 +206,7 @@ export default function Services() {
           <p 
             className="font-bold text-sm uppercase"
             style={{
-              color: '#285E4B',
+              color: '#E6FF2B',
               letterSpacing: '0.2em',
               fontFamily: "'Outfit', sans-serif"
             }}

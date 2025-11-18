@@ -33,10 +33,10 @@ MacWindow.displayName = 'MacWindow';
 // Optimized Bar Chart - CSS animations for GPU acceleration
 const AnimatedBarChart = memo(() => {
   const bars = [
-    { height: 75, color: 'bg-[#285E4B]/70', delay: 0 },
-    { height: 45, color: 'bg-[#378268]/60', delay: 0.15 },
-    { height: 85, color: 'bg-[#378268]/70', delay: 0.3 },
-    { height: 55, color: 'bg-[#46A684]/60', delay: 0.45 },
+    { height: 75, color: 'bg-[#E6FF2B]/70', delay: 0 },
+    { height: 45, color: 'bg-[#0B4650]/60', delay: 0.15 },
+    { height: 85, color: 'bg-[#0B4650]/70', delay: 0.3 },
+    { height: 55, color: 'bg-[#F9F7F2]/60', delay: 0.45 },
   ];
 
   return (
@@ -98,19 +98,19 @@ const TargetGauge = memo(() => {
     <div className="relative w-16 h-16">
       {/* Multiple animated circles - CSS animations */}
       <div
-        className="absolute inset-0 border-2 border-[#378268]/30 rounded-full"
+        className="absolute inset-0 border-2 border-[#E6FF2B]/30 rounded-full"
         style={{
           animation: 'gaugePulse1 2.5s ease-in-out infinite'
         }}
       />
       <div
-        className="absolute inset-1 border-2 border-[#378268]/40 rounded-full"
+        className="absolute inset-1 border-2 border-[#E6FF2B]/40 rounded-full"
         style={{
           animation: 'gaugePulse2 2s ease-in-out infinite'
         }}
       />
       <div
-        className="absolute inset-2 border-2 border-[#46A684]/50 rounded-full"
+        className="absolute inset-2 border-2 border-[#F9F7F2]/50 rounded-full"
         style={{
           animation: 'gaugePulse3 1.8s ease-in-out infinite'
         }}
@@ -123,13 +123,13 @@ const TargetGauge = memo(() => {
           animation: 'gaugeRotate 4s linear infinite'
         }}
       >
-        <div className="w-full h-full border-2 border-transparent border-t-[#285E4B] rounded-full" />
+        <div className="w-full h-full border-2 border-transparent border-t-[#E6FF2B] rounded-full" />
       </div>
       
       {/* Center pulsing dot */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
-          className="w-2.5 h-2.5 bg-[#285E4B] rounded-full shadow-lg shadow-[#285E4B]/50"
+          className="w-2.5 h-2.5 bg-[#E6FF2B] rounded-full shadow-lg shadow-[#E6FF2B]/50"
           style={{
             animation: 'centerPulse 1.5s ease-in-out infinite'
           }}
@@ -147,7 +147,7 @@ const TargetGauge = memo(() => {
           }}
         >
           <div 
-            className="absolute w-1 h-1 bg-[#46A684] rounded-full"
+            className="absolute w-1 h-1 bg-[#F9F7F2] rounded-full"
             style={{
               top: '50%',
               left: '50%',
@@ -165,7 +165,7 @@ TargetGauge.displayName = 'TargetGauge';
 // Optimized Code Animation - CSS animations for typing effect
 const CodeAnimation = memo(() => {
   const codeLines = [
-    { text: 'Sampling(ayers.Layer):', color: 'text-[#46A684]', width: 85, delay: 0 },
+    { text: 'Sampling(ayers.Layer):', color: 'text-[#E6FF2B]', width: 85, delay: 0 },
     { text: '"""Uses mean, log_var to sample z..."""', color: 'text-gray-500', width: 95, delay: 0.6 },
     { text: '', color: '', width: 0, delay: 0 },
     { text: 'call(self, inputs):', color: 'text-blue-400', width: 70, delay: 1.2 },
@@ -190,7 +190,7 @@ const CodeAnimation = memo(() => {
           {line.width > 0 && (
             <>
               <div 
-                className="text-[#378268]"
+                className="text-[#F3FF7A]"
                 style={{
                   animation: `cursorBlink 0.8s ease-in-out ${line.delay}s 3`
                 }}
@@ -218,9 +218,9 @@ const CodeAnimation = memo(() => {
         transition={{ delay: 2.4 }}
         className="flex items-center gap-2"
       >
-        <div className="text-[#378268]">{'>'}</div>
+        <div className="text-[#F3FF7A]">{'>'}</div>
         <div 
-          className="w-1 h-3 bg-[#378268]"
+          className="w-1 h-3 bg-[#F3FF7A]"
           style={{
             animation: 'cursorBlink 0.8s ease-in-out infinite'
           }}
@@ -284,7 +284,7 @@ const UpdatingStatus = memo(() => {
             cy="50"
             r="45"
             fill="none"
-            stroke="rgba(40, 94, 75, 0.3)"
+            stroke="rgba(11, 70, 80, 0.3)"
             strokeWidth="8"
           />
           <circle
@@ -333,7 +333,7 @@ const ProcessCard = memo(({ step, index, isInView }: any) => {
           <div
             className="absolute inset-0 z-0 opacity-20"
             style={{
-              background: 'radial-gradient(circle at center, rgba(40, 94, 75, 0.6) 0%, transparent 60%)',
+              background: 'radial-gradient(circle at center, rgba(11, 70, 80, 0.6) 0%, transparent 60%)',
             }}
           />
         )}
@@ -351,7 +351,7 @@ const ProcessCard = memo(({ step, index, isInView }: any) => {
             <h3 
               className="text-2xl font-bold mb-4 transition-colors"
               style={{
-                color: isHovered ? '#46A684' : '#FFFFFF',
+                color: isHovered ? '#E6FF2B' : '#FFFFFF',
                 fontFamily: "'Outfit', sans-serif"
               }}
             >
@@ -375,7 +375,7 @@ const ProcessCard = memo(({ step, index, isInView }: any) => {
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}
           transition={{ duration: 0.8, delay: index * 0.2 + 0.6 }}
-          className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-[#285E4B]/50 to-[#378268]/50 origin-left"
+          className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-[#E6FF2B]/50 to-[#F3FF7A]/50 origin-left"
         />
       )}
     </motion.div>
@@ -455,10 +455,10 @@ export default function Process() {
             transition={{ duration: 0.6 }}
             className="inline-block px-5 py-2 text-sm font-bold uppercase tracking-[0.2em] mb-6 rounded-lg"
             style={{
-              color: '#285E4B',
+              color: '#E6FF2B',
               fontFamily: "'Outfit', sans-serif",
-              backgroundColor: 'rgba(40, 94, 75, 0.1)',
-              border: '1px solid rgba(40, 94, 75, 0.2)'
+              backgroundColor: 'rgba(230, 255, 43, 0.1)',
+              border: '1px solid rgba(230, 255, 43, 0.2)'
             }}
           >
             {t('badge')}
@@ -473,7 +473,7 @@ export default function Process() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #285E4B 0%, #193A2E 50%, #46A684 100%)',
+              background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -513,7 +513,7 @@ export default function Process() {
               whileTap={{ scale: 0.98 }}
               className="px-8 py-4 rounded-full font-semibold text-white transition-all duration-300 shadow-2xl"
               style={{
-                background: 'linear-gradient(135deg, #285E4B 0%, #193A2E 100%)',
+                background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%)',
                 fontFamily: "'Outfit', sans-serif"
               }}
             >

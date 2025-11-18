@@ -22,7 +22,7 @@ const FAQItem = memo(({ faq, index, isInView, openIndex, toggleFAQ }: any) => {
         whileTap={{ scale: 0.99 }}
       >
         <div className="flex items-center justify-between gap-4">
-          <h3 className="text-lg font-semibold text-white group-hover:text-[#378268] transition-colors pr-4">
+          <h3 className="text-lg font-semibold text-white group-hover:text-[#F3FF7A] transition-colors pr-4">
             {faq.question}
           </h3>
           <motion.div
@@ -31,7 +31,7 @@ const FAQItem = memo(({ faq, index, isInView, openIndex, toggleFAQ }: any) => {
             className="flex-shrink-0 w-8 h-8 rounded-full glass-effect glass-border flex items-center justify-center"
           >
             <svg
-              className="w-5 h-5 text-[#378268]"
+              className="w-5 h-5 text-[#F3FF7A]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -109,8 +109,8 @@ export default function FAQ() {
   return (
     <section ref={ref} className="relative py-32 overflow-hidden section-green-dark section-overlay-green">
       <div className="absolute inset-0 bg-grid-small opacity-20" />
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#285E4B]/15 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#378268]/15 rounded-full blur-[150px]" />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#E6FF2B]/15 rounded-full blur-[150px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#F3FF7A]/15 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div
@@ -123,7 +123,7 @@ export default function FAQ() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-block glass-effect glass-border rounded-lg px-5 py-2 text-sm font-semibold text-[#378268] mb-6 tracking-wider uppercase"
+            className="inline-block glass-effect glass-border rounded-lg px-5 py-2 text-sm font-semibold text-[#F3FF7A] mb-6 tracking-wider uppercase"
           >
             {t('badge')}
           </motion.span>
@@ -164,7 +164,7 @@ export default function FAQ() {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-primary shadow-2xl shadow-[#285E4B]/30"
+              className="btn-primary shadow-2xl shadow-[#E6FF2B]/30"
             >
               {t('contactUs')}
             </motion.button>

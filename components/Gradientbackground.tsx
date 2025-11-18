@@ -45,7 +45,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '-5%',
                 width: '50%',
                 height: '50%',
-                background: 'radial-gradient(circle, rgba(70, 166, 132, 0.15) 0%, rgba(55, 130, 104, 0.08) 40%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(230, 255, 43, 0.15) 0%, rgba(230, 255, 43, 0.08) 40%, transparent 70%)',
                 filter: 'blur(80px)',
                 animation: 'floatOrb1 25s ease-in-out infinite',
                 opacity: 0.8
@@ -61,7 +61,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '25%',
                 width: '50%',
                 height: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(40, 94, 75, 0.12) 0%, rgba(55, 130, 104, 0.06) 30%, transparent 60%)',
+                background: 'radial-gradient(ellipse at center, rgba(11, 70, 80, 0.12) 0%, rgba(230, 255, 43, 0.06) 30%, transparent 60%)',
                 filter: 'blur(120px)',
                 animation: 'floatOrb2 30s ease-in-out infinite',
                 opacity: 0.7
@@ -77,7 +77,7 @@ const GradientBackground = memo(function GradientBackground({
                 right: '-10%',
                 width: '45%',
                 height: '60%',
-                background: 'radial-gradient(ellipse, rgba(55, 130, 104, 0.14) 0%, rgba(70, 166, 132, 0.07) 35%, transparent 65%)',
+                background: 'radial-gradient(ellipse, rgba(230, 255, 43, 0.14) 0%, rgba(230, 255, 43, 0.07) 35%, transparent 65%)',
                 filter: 'blur(100px)',
                 animation: 'floatOrb3 28s ease-in-out infinite',
                 opacity: 0.75
@@ -93,7 +93,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '10%',
                 width: '40%',
                 height: '40%',
-                background: 'radial-gradient(circle, rgba(46, 166, 132, 0.1) 0%, rgba(55, 130, 104, 0.05) 40%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(137, 138, 141, 0.1) 0%, rgba(230, 255, 43, 0.05) 40%, transparent 70%)',
                 filter: 'blur(90px)',
                 animation: 'floatOrb4 32s ease-in-out infinite',
                 opacity: 0.65
@@ -109,7 +109,7 @@ const GradientBackground = memo(function GradientBackground({
                 right: '5%',
                 width: '45%',
                 height: '45%',
-                background: 'radial-gradient(circle, rgba(55, 130, 104, 0.11) 0%, rgba(40, 94, 75, 0.06) 40%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(230, 255, 43, 0.11) 0%, rgba(11, 70, 80, 0.06) 40%, transparent 70%)',
                 filter: 'blur(95px)',
                 animation: 'floatOrb5 27s ease-in-out infinite',
                 opacity: 0.7
@@ -120,7 +120,7 @@ const GradientBackground = memo(function GradientBackground({
             <div 
               className="absolute inset-0"
               style={{
-                background: 'radial-gradient(ellipse at 50% 30%, rgba(70, 166, 132, 0.04) 0%, transparent 50%)',
+                background: 'radial-gradient(ellipse at 50% 30%, rgba(230, 255, 43, 0.04) 0%, transparent 50%)',
                 opacity: 0.8
               }}
             />
@@ -145,7 +145,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '0',
                 right: '0',
                 height: '60%',
-                background: 'linear-gradient(180deg, rgba(70, 166, 132, 0.15) 0%, rgba(55, 130, 104, 0.08) 40%, transparent 100%)',
+                background: 'linear-gradient(180deg, rgba(230, 255, 43, 0.15) 0%, rgba(230, 255, 43, 0.08) 40%, transparent 100%)',
                 filter: 'blur(60px)',
                 animation: 'auraFlow1 20s ease-in-out infinite',
                 opacity: 0.8
@@ -161,7 +161,7 @@ const GradientBackground = memo(function GradientBackground({
                 right: '-10%',
                 width: '50%',
                 height: '80%',
-                background: 'linear-gradient(270deg, rgba(70, 166, 132, 0.12) 0%, rgba(40, 94, 75, 0.06) 50%, transparent 100%)',
+                background: 'linear-gradient(270deg, rgba(230, 255, 43, 0.12) 0%, rgba(11, 70, 80, 0.06) 50%, transparent 100%)',
                 filter: 'blur(80px)',
                 animation: 'auraFlow2 25s ease-in-out infinite',
                 opacity: 0.7
@@ -177,7 +177,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '0',
                 right: '0',
                 height: '50%',
-                background: 'linear-gradient(0deg, rgba(55, 130, 104, 0.1) 0%, rgba(70, 166, 132, 0.05) 40%, transparent 100%)',
+                background: 'linear-gradient(0deg, rgba(230, 255, 43, 0.1) 0%, rgba(230, 255, 43, 0.05) 40%, transparent 100%)',
                 filter: 'blur(70px)',
                 animation: 'auraFlow3 30s ease-in-out infinite',
                 opacity: 0.6
@@ -198,7 +198,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '10%',
                 right: '10%',
                 height: '40%',
-                background: 'linear-gradient(180deg, rgba(70, 166, 132, 0.08) 0%, rgba(55, 130, 104, 0.04) 50%, transparent 100%)',
+                background: 'linear-gradient(180deg, rgba(230, 255, 43, 0.08) 0%, rgba(230, 255, 43, 0.04) 50%, transparent 100%)',
                 filter: 'blur(70px)',
                 animation: 'auraFlow1 22s ease-in-out infinite',
                 opacity: 0.7
@@ -214,7 +214,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '15%',
                 right: '15%',
                 height: '35%',
-                background: 'linear-gradient(0deg, rgba(55, 130, 104, 0.06) 0%, transparent 100%)',
+                background: 'linear-gradient(0deg, rgba(230, 255, 43, 0.06) 0%, transparent 100%)',
                 filter: 'blur(60px)',
                 animation: 'auraFlow2 28s ease-in-out infinite',
                 opacity: 0.6
@@ -233,7 +233,7 @@ const GradientBackground = memo(function GradientBackground({
               left: '20%',
               right: '20%',
               height: '40%',
-              background: 'linear-gradient(180deg, rgba(70, 166, 132, 0.05) 0%, transparent 100%)',
+              background: 'linear-gradient(180deg, rgba(230, 255, 43, 0.05) 0%, transparent 100%)',
               filter: 'blur(80px)',
               animation: 'auraFlow1 25s ease-in-out infinite',
               opacity: 0.5
@@ -253,7 +253,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '-10%',
                 width: '60%',
                 height: '60%',
-                background: 'linear-gradient(135deg, rgba(70, 166, 132, 0.1) 0%, rgba(55, 130, 104, 0.05) 50%, transparent 100%)',
+                background: 'linear-gradient(135deg, rgba(230, 255, 43, 0.1) 0%, rgba(230, 255, 43, 0.05) 50%, transparent 100%)',
                 filter: 'blur(70px)',
                 animation: 'auraFlow1 23s ease-in-out infinite',
                 opacity: 0.7
@@ -269,7 +269,7 @@ const GradientBackground = memo(function GradientBackground({
                 left: '20%',
                 right: '20%',
                 height: '60%',
-                background: 'radial-gradient(ellipse at center, rgba(70, 166, 132, 0.06) 0%, transparent 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(230, 255, 43, 0.06) 0%, transparent 70%)',
                 filter: 'blur(90px)',
                 animation: 'auraPulse 20s ease-in-out infinite',
                 opacity: 0.8
@@ -285,7 +285,7 @@ const GradientBackground = memo(function GradientBackground({
                 right: '-10%',
                 width: '50%',
                 height: '50%',
-                background: 'linear-gradient(315deg, rgba(55, 130, 104, 0.08) 0%, transparent 70%)',
+                background: 'linear-gradient(315deg, rgba(230, 255, 43, 0.08) 0%, transparent 70%)',
                 filter: 'blur(75px)',
                 animation: 'auraFlow3 27s ease-in-out infinite',
                 opacity: 0.6

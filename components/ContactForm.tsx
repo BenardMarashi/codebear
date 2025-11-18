@@ -106,8 +106,8 @@ export default function ContactForm() {
     <section ref={ref} id="contact" className="relative py-32 overflow-hidden section-green-dark section-overlay-green">
       <div className="absolute inset-0 bg-grid-small opacity-20" />
 
-      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#285E4B]/15 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[#378268]/15 rounded-full blur-[150px]" />
+      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#E6FF2B]/15 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[#F3FF7A]/15 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div
@@ -135,7 +135,7 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    {t('form.name')} <span className="text-[#378268]">{t('form.required')}</span>
+                    {t('form.name')} <span className="text-[#F3FF7A]">{t('form.required')}</span>
                   </label>
                   <input
                     type="text"
@@ -146,12 +146,12 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder={t('form.namePlaceholder')}
                     disabled={status === 'sending'}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all disabled:opacity-50"
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    {t('form.email')} <span className="text-[#378268]">{t('form.required')}</span>
+                    {t('form.email')} <span className="text-[#F3FF7A]">{t('form.required')}</span>
                   </label>
                   <input
                     type="email"
@@ -162,7 +162,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder={t('form.emailPlaceholder')}
                     disabled={status === 'sending'}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -180,7 +180,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder={t('form.companyPlaceholder')}
                     disabled={status === 'sending'}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all disabled:opacity-50"
                   />
                 </div>
                 <div>
@@ -195,7 +195,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder={t('form.phonePlaceholder')}
                     disabled={status === 'sending'}
-                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function ContactForm() {
                   value={formData.service}
                   onChange={handleChange}
                   disabled={status === 'sending'}
-                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all bg-transparent disabled:opacity-50"
+                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all bg-transparent disabled:opacity-50"
                 >
                   <option value="" className="bg-black">{t('form.selectService')}</option>
                   <option value="shopify" className="bg-black">{t('form.services.shopify')}</option>
@@ -224,7 +224,7 @@ export default function ContactForm() {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  {t('form.message')} <span className="text-[#378268]">{t('form.required')}</span>
+                  {t('form.message')} <span className="text-[#F3FF7A]">{t('form.required')}</span>
                 </label>
                 <textarea
                   id="message"
@@ -235,7 +235,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder={t('form.messagePlaceholder')}
                   disabled={status === 'sending'}
-                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#285E4B] transition-all resize-none disabled:opacity-50"
+                  className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all resize-none disabled:opacity-50"
                 />
               </div>
 
@@ -244,7 +244,7 @@ export default function ContactForm() {
                 disabled={status === 'sending'}
                 whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
                 whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
-                className="w-full btn-primary py-4 text-lg shadow-2xl shadow-[#285E4B]/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full btn-primary py-4 text-lg shadow-2xl shadow-[#E6FF2B]/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {status === 'sending' && (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -288,10 +288,10 @@ export default function ContactForm() {
             <div className="mt-12 pt-8 border-t border-white/10">
               <p className="text-gray-400 text-center mb-4">{t('reachUs')}</p>
               <div className="flex flex-col sm:flex-row justify-center gap-6 text-center">
-                <a href="mailto:hello@codebear.at" className="text-[#378268] hover:text-[#285E4B] transition-colors">
+                <a href="mailto:hello@codebear.at" className="text-[#F3FF7A] hover:text-[#E6FF2B] transition-colors">
                   {t('email')}
                 </a>
-                <a href="tel:+43XXXXXXXXX" className="text-[#378268] hover:text-[#285E4B] transition-colors">
+                <a href="tel:+43XXXXXXXXX" className="text-[#F3FF7A] hover:text-[#E6FF2B] transition-colors">
                   {t('phone')}
                 </a>
               </div>
