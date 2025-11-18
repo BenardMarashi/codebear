@@ -5,7 +5,8 @@ import {
   User,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  Auth
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
@@ -23,19 +24,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    // Only set up auth listener on client-side when auth is available
+    if (typeof window === 'undefined' || !auth) {
+      setLoading(false);
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(auth as Auth, (user) => {
       setUser(user);
       setLoading(false);
     });
-    return unsubscribe;
+    
+    return () => unsubscribe();
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    if (!auth) {
+      throw new Error('Firebase auth not initialized');
+    }
+    await signInWithEmailAndPassword(auth as Auth, email, password);
   };
 
   const signOut = async () => {
-    await firebaseSignOut(auth);
+    if (!auth) {
+      throw new Error('Firebase auth not initialized');
+    }
+    await firebaseSignOut(auth as Auth);
   };
 
   return (
