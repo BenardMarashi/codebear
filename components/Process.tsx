@@ -432,7 +432,6 @@ export default function Process() {
       ref={ref} 
       id="process" 
       className="py-20 sm:py-24 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: '#0D2556' }}
       aria-labelledby="process-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
