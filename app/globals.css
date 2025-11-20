@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --primary: #E6FF2B;
-  --primary-light: #F3FF7A;
-  --primary-dark: #C4D922;
-  --secondary: #0B4650;
-  --accent: #E6FF2B;
-  --background: #0B4650;
-  --foreground: #F9F7F2;
+  --primary: #D8420E;
+  --primary-light: #D8420E;
+  --primary-dark: #B8350C;
+  --secondary: #0D2556;
+  --accent: #D8420E;
+  --background: #0D2556;
+  --foreground: #FFFFFF;
 }
 
 * {
@@ -38,7 +38,7 @@ body {
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%);
+    background-image: linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%);
   }
 
   .glass-effect {
@@ -70,12 +70,12 @@ body {
 
   .btn-primary {
     @apply px-8 py-4 rounded-full font-semibold text-white transition-all duration-300;
-    background: linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%);
+    background: linear-gradient(135deg, #D8420E 0%, #0D2556 100%);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(230, 255, 43, 0.4);
+    box-shadow: 0 20px 40px rgba(216, 66, 14, 0.4);
   }
 
   .btn-secondary {
@@ -91,15 +91,15 @@ body {
 
 .bg-grid {
   background-image: 
-    linear-gradient(rgba(230, 255, 43, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11, 70, 80, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(216, 66, 14, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 37, 86, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 .bg-grid-small {
   background-image: 
-    linear-gradient(rgba(11, 70, 80, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11, 70, 80, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(13, 37, 86, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 37, 86, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -116,9 +116,9 @@ body {
   animation: shimmer 2s infinite;
   background: linear-gradient(
     to right,
-    rgba(11, 70, 80, 0.1) 0%,
-    rgba(11, 70, 80, 0.2) 50%,
-    rgba(11, 70, 80, 0.1) 100%
+    rgba(13, 37, 86, 0.1) 0%,
+    rgba(13, 37, 86, 0.2) 50%,
+    rgba(13, 37, 86, 0.1) 100%
   );
   background-size: 1000px 100%;
 }
@@ -324,12 +324,12 @@ a:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #E6FF2B 0%, #0B4650 100%);
+  background: linear-gradient(135deg, #D8420E 0%, #0D2556 100%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #F3FF7A 0%, #E6FF2B 100%);
+  background: linear-gradient(135deg, #D8420E 0%, #D8420E 100%);
 }
 
 /* ========================================
@@ -411,7 +411,7 @@ a:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top, rgba(230, 255, 43, 0.03) 0%, transparent 50%);
+  background: radial-gradient(ellipse at top, rgba(216, 66, 14, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
 }

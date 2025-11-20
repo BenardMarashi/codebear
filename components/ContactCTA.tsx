@@ -23,7 +23,7 @@ export default function ContactCTA() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-r from-[#E6FF2B]/25 to-[#F3FF7A]/25 rounded-full blur-[150px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-r from-[#D8420E]/25 to-[#D8420E]/25 rounded-full blur-[150px]"
       />
 
       <div className="relative z-10 section-container">
@@ -34,7 +34,7 @@ export default function ContactCTA() {
           className="max-w-5xl mx-auto"
         >
           <div className="glass-effect glass-border rounded-[40px] p-12 lg:p-16 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E6FF2B]/5 to-[#F3FF7A]/5" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D8420E]/5 to-[#D8420E]/5" />
 
             <motion.div
               animate={{
@@ -45,7 +45,7 @@ export default function ContactCTA() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -top-20 -left-20 w-40 h-40 border border-[#E6FF2B]/20 rounded-full"
+              className="absolute -top-20 -left-20 w-40 h-40 border border-[#D8420E]/20 rounded-full"
             />
             <motion.div
               animate={{
@@ -56,7 +56,7 @@ export default function ContactCTA() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -bottom-20 -right-20 w-40 h-40 border border-[#F3FF7A]/20 rounded-full"
+              className="absolute -bottom-20 -right-20 w-40 h-40 border border-[#D8420E]/20 rounded-full"
             />
 
             <div className="relative z-10">
@@ -92,7 +92,7 @@ export default function ContactCTA() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl glass-effect glass-border flex items-center justify-center group-hover:scale-110 transition-transform">
                       <svg
-                        className="w-6 h-6 text-[#F3FF7A]"
+                        className="w-6 h-6 text-[#D8420E]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ export default function ContactCTA() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl glass-effect glass-border flex items-center justify-center group-hover:scale-110 transition-transform">
                       <svg
-                        className="w-6 h-6 text-[#F3FF7A]"
+                        className="w-6 h-6 text-[#D8420E]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ export default function ContactCTA() {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-primary text-lg px-12 py-5 shadow-2xl shadow-[#E6FF2B]/40"
+                    className="btn-primary text-lg px-12 py-5 shadow-2xl shadow-[#D8420E]/40"
                   >
                     {t('scheduleCTA')}
                   </motion.button>
@@ -168,7 +168,7 @@ export default function ContactCTA() {
                   { icon: '✓', text: t('features.solutions') },
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <span className="text-[#F3FF7A]">{feature.icon}</span>
+                    <span className="text-[#D8420E]">{feature.icon}</span>
                     <span>{feature.text}</span>
                   </div>
                 ))}

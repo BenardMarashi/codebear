@@ -52,7 +52,7 @@ export default function Testimonials() {
 
   return (
     <section ref={ref} className="relative py-32 overflow-hidden section-green-medium section-overlay-green">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#E6FF2B]/10 rounded-full blur-[150px]" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#D8420E]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div
@@ -65,7 +65,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-block glass-effect glass-border rounded-lg px-5 py-2 text-sm font-semibold text-[#F3FF7A] mb-6 tracking-wider uppercase"
+            className="inline-block glass-effect glass-border rounded-lg px-5 py-2 text-sm font-semibold text-[#D8420E] mb-6 tracking-wider uppercase"
           >
             {t('badge')}
           </motion.span>
@@ -114,8 +114,8 @@ export default function Testimonials() {
               transition={{ duration: 0.5 }}
               className="glass-effect glass-border rounded-3xl p-12 relative"
             >
-              <div className="absolute top-8 left-8 text-6xl text-[#E6FF2B]/20">"</div>
-              <div className="absolute bottom-8 right-8 text-6xl text-[#E6FF2B]/20">"</div>
+              <div className="absolute top-8 left-8 text-6xl text-[#D8420E]/20">"</div>
+              <div className="absolute bottom-8 right-8 text-6xl text-[#D8420E]/20">"</div>
 
               <div className="relative z-10">
                 <div className="flex justify-center gap-1 mb-6">
@@ -185,7 +185,7 @@ export default function Testimonials() {
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${
                     index === currentIndex
-                      ? 'w-8 bg-[#E6FF2B]'
+                      ? 'w-8 bg-[#D8420E]'
                       : 'bg-gray-600 hover:bg-gray-500'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}

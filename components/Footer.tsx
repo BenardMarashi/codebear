@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer ref={ref} className="relative py-20 overflow-hidden border-t section-green-dark section-overlay-green" style={{ borderColor: 'rgba(11, 70, 80, 0.3)' }}>
+    <footer ref={ref} className="relative py-20 overflow-hidden border-t section-green-dark section-overlay-green" style={{ borderColor: 'rgba(13, 37, 86, 0.3)' }}>
       
       <div className="relative z-10 section-container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">
@@ -65,7 +65,7 @@ export default function Footer() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 glass-effect glass-border rounded-xl flex items-center justify-center hover:bg-[#E6FF2B]/10 transition-all"
+                  className="w-12 h-12 glass-effect glass-border rounded-xl flex items-center justify-center hover:bg-[#D8420E]/10 transition-all"
                   aria-label={social.label}
                 >
                   <span className="text-xl">{social.icon}</span>
@@ -97,12 +97,12 @@ export default function Footer() {
                 >
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#F3FF7A] transition-colors inline-flex items-center group"
+                    className="text-gray-400 hover:text-[#D8420E] transition-colors inline-flex items-center group"
                   >
                     <motion.span
                       initial={{ x: 0 }}
                       whileHover={{ x: 5 }}
-                      className="mr-2 text-[#F3FF7A]"
+                      className="mr-2 text-[#D8420E]"
                     >
                       →
                     </motion.span>
@@ -130,7 +130,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t('newsletter.placeholder')}
-                className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B] transition-all text-sm"
+                className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D8420E] transition-all text-sm"
                 required
               />
               <motion.button
@@ -165,13 +165,13 @@ export default function Footer() {
             </div>
 
             <div className="flex gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-500 hover:text-[#F3FF7A] transition-colors">
+              <Link href="/privacy" className="text-gray-500 hover:text-[#D8420E] transition-colors">
                 {t('legal.privacy')}
               </Link>
-              <Link href="/terms" className="text-gray-500 hover:text-[#F3FF7A] transition-colors">
+              <Link href="/terms" className="text-gray-500 hover:text-[#D8420E] transition-colors">
                 {t('legal.terms')}
               </Link>
-              <Link href="/cookies" className="text-gray-500 hover:text-[#F3FF7A] transition-colors">
+              <Link href="/cookies" className="text-gray-500 hover:text-[#D8420E] transition-colors">
                 {t('legal.cookies')}
               </Link>
             </div>

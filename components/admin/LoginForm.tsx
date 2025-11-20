@@ -36,7 +36,7 @@ export default function LoginForm() {
         className="w-full max-w-md glass-effect glass-border rounded-3xl p-8"
       >
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-[#E6FF2B] to-[#F3FF7A] rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-gradient-to-br from-[#D8420E] to-[#D8420E] rounded-2xl flex items-center justify-center mx-auto mb-4">
             <span className="text-3xl">🐻</span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Admin Login</h1>
@@ -57,7 +57,7 @@ export default function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B]"
+              className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D8420E]"
               placeholder="admin@codebear.at"
             />
           </div>
@@ -69,7 +69,7 @@ export default function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#E6FF2B]"
+              className="w-full px-4 py-3 glass-effect glass-border rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D8420E]"
               placeholder="••••••••"
             />
           </div>

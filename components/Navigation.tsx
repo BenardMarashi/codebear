@@ -53,10 +53,10 @@ export default function Navigation() {
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
             <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center">
               <div className="grid grid-cols-2 gap-[2px] w-4 h-4">
-                <div className="bg-[#E6FF2B] rounded-sm"></div>
-                <div className="bg-[#F3FF7A] rounded-sm"></div>
-                <div className="bg-[#F3FF7A] rounded-sm"></div>
-                <div className="bg-[#E6FF2B] rounded-sm"></div>
+                <div className="bg-[#D8420E] rounded-sm"></div>
+                <div className="bg-[#D8420E] rounded-sm"></div>
+                <div className="bg-[#D8420E] rounded-sm"></div>
+                <div className="bg-[#D8420E] rounded-sm"></div>
               </div>
             </div>
           </Link>
@@ -93,7 +93,7 @@ export default function Navigation() {
                 transition={{ duration: 0.3, delay: 0.5 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 bg-[#E6FF2B] border border-white/10 text-white text-sm font-medium rounded-lg hover:bg-[#0B4650] hover:shadow-lg hover:shadow-[#E6FF2B]/30 transition-all flex items-center gap-2"
+                className="px-4 py-2 bg-[#D8420E] border border-white/10 text-white text-sm font-medium rounded-lg hover:bg-[#0D2556] hover:shadow-lg hover:shadow-[#D8420E]/30 transition-all flex items-center gap-2"
               >
                 <svg 
                   width="20" 

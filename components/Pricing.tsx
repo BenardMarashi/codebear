@@ -99,7 +99,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
       className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border"
       style={{
         backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        borderColor: plan.popular ? '#E6FF2B' : 'rgba(255, 255, 255, 0.1)'
+        borderColor: plan.popular ? '#D8420E' : 'rgba(255, 255, 255, 0.1)'
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -112,7 +112,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
           <div 
             className="px-4 py-1 rounded-full text-xs font-semibold text-white"
             style={{
-              background: 'linear-gradient(135deg, #E6FF2B 0%, #F3FF7A 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #D8420E 100%)',
             }}
           >
             {t('popular')}
@@ -130,7 +130,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
             style={{
-              background: 'radial-gradient(circle at center, rgba(11, 70, 80, 0.2) 0%, transparent 60%)',
+              background: 'radial-gradient(circle at center, rgba(13, 37, 86, 0.2) 0%, transparent 60%)',
             }}
           />
         )}
@@ -173,7 +173,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
             <span 
               className="text-5xl font-bold"
               style={{
-                background: 'linear-gradient(135deg, #E6FF2B 0%, #F38268 50%, #46A684 100%)',
+                background: 'linear-gradient(135deg, #D8420E 0%, #F38268 50%, #46A684 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -221,7 +221,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
                 <li key={idx} className="flex items-start gap-3">
                   <svg
                     className="w-5 h-5 flex-shrink-0 mt-0.5"
-                    style={{ color: '#F3FF7A' }}
+                    style={{ color: '#D8420E' }}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -300,7 +300,7 @@ export default function Pricing() {
           <p 
             className="font-bold text-sm uppercase"
             style={{
-              color: '#E6FF2B',
+              color: '#D8420E',
               letterSpacing: '0.2em',
               fontFamily: "'Outfit', sans-serif"
             }}
@@ -317,7 +317,7 @@ export default function Pricing() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #E6FF2B 0%, #F38268 50%, #46A684 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #F38268 50%, #46A684 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -355,7 +355,7 @@ export default function Pricing() {
           className="text-center mt-16"
         >
           <p className="text-gray-400">
-            {t('note')} <a href="#contact" className="hover:text-[#F3FF7A] underline transition-colors" style={{ color: '#E6FF2B' }}>{t('contactUs')}</a>
+            {t('note')} <a href="#contact" className="hover:text-[#D8420E] underline transition-colors" style={{ color: '#D8420E' }}>{t('contactUs')}</a>
           </p>
         </motion.div>
       </motion.div>

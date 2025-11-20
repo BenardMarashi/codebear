@@ -69,7 +69,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
           <div
             className="absolute inset-0 z-0 opacity-20"
             style={{
-              background: 'radial-gradient(circle at center, rgba(11, 70, 80, 0.6) 0%, transparent 60%)',
+              background: 'radial-gradient(circle at center, rgba(13, 37, 86, 0.6) 0%, transparent 60%)',
             }}
           />
         )}
@@ -96,7 +96,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
             <div 
               className="text-6xl font-bold mb-2"
               style={{
-                background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%)',
+                background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -120,7 +120,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
           <h3 
             className="text-2xl font-bold mb-4 transition-colors"
             style={{
-              color: isHovered ? '#E6FF2B' : '#FFFFFF',
+              color: isHovered ? '#D8420E' : '#FFFFFF',
               fontFamily: "'Outfit', sans-serif"
             }}
           >
@@ -196,10 +196,10 @@ export default function Benefits() {
             transition={{ duration: 0.6 }}
             className="inline-block px-5 py-2 text-sm font-bold uppercase tracking-[0.2em] mb-6 rounded-lg"
             style={{
-              color: '#E6FF2B',
+              color: '#D8420E',
               fontFamily: "'Outfit', sans-serif",
-              backgroundColor: 'rgba(230, 255, 43, 0.1)',
-              border: '1px solid rgba(230, 255, 43, 0.2)'
+              backgroundColor: 'rgba(216, 66, 14, 0.1)',
+              border: '1px solid rgba(216, 66, 14, 0.2)'
             }}
           >
             {t('badge')}
@@ -214,7 +214,7 @@ export default function Benefits() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -270,7 +270,7 @@ export default function Benefits() {
                 <div 
                   className="text-5xl lg:text-6xl font-bold mb-3"
                   style={{
-                    background: 'linear-gradient(135deg, #E6FF2B 0%, #0B4650 50%, #F9F7F2 100%)',
+                    background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
