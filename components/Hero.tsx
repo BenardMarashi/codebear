@@ -66,7 +66,7 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute bottom-20 left-20 w-[500px] h-[500px] rounded-full blur-[120px] bg-[radial-gradient(circle,rgba(216,66,14,0.25)_0%,transparent_70%)]"
+          className="absolute bottom-20 left-20 w-[500px] h-[500px] rounded-full blur-[120px] bg-[radial-gradient(circle,rgba(230,255,43,0.25)_0%,transparent_70%)]"
         />
       </div>
 

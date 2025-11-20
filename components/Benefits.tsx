@@ -180,7 +180,7 @@ export default function Benefits() {
   return (
     <section 
       ref={ref} 
-      className="py-20 sm:py-24 lg:py-32 overflow-hidden section-green-medium section-overlay-green"
+      className="py-20 sm:py-24 lg:py-32 overflow-hidden"
       aria-labelledby="benefits-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -12,7 +12,7 @@ export default function ContactCTA() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden section-green-medium section-overlay-green">
+    <section ref={ref} className="relative py-32 overflow-hidden">
       <motion.div
         animate={{
           scale: [1, 1.2, 1],

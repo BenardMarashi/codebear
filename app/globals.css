@@ -415,13 +415,3 @@ a:focus-visible {
   pointer-events: none;
   z-index: 1;
 }
-
-.section-green-dark,
-.section-green-medium,
-.section-overlay-green {
-  background: transparent !important;
-}
-
-.section-overlay-green::before {
-  display: none !important;
-}

@@ -103,7 +103,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section ref={ref} id="contact" className="relative py-32 overflow-hidden section-green-dark section-overlay-green">
+    <section ref={ref} id="contact" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 bg-grid-small opacity-20" />
 
       <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#D8420E]/15 rounded-full blur-[150px]" />

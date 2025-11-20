@@ -191,7 +191,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-20 sm:py-24 lg:py-32 section-green-dark section-overlay-green"
+      className="py-20 sm:py-24 lg:py-32"
       aria-labelledby="services-heading"
     >
       <motion.div

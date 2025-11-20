@@ -51,7 +51,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden section-green-medium section-overlay-green">
+    <section ref={ref} className="relative py-32 overflow-hidden">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#D8420E]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
