@@ -103,11 +103,18 @@ export default function ContactForm() {
   };
 
   return (
-    <section ref={ref} id="contact" className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-small opacity-20" />
+    <section 
+  ref={ref} 
+  id="contact" 
+  className="relative py-32 overflow-hidden"
+  style={{ 
+    background: 'linear-gradient(180deg, #081b3d 0%, #0D2556 100%)'
+  }}
+>
+  <div className="absolute inset-0 bg-grid-small opacity-20" />
 
-      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#D8420E]/15 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[#D8420E]/15 rounded-full blur-[150px]" />
+  <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#D8420E]/10 rounded-full blur-[150px]" />
+  <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[#D8420E]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 section-container">
         <motion.div
