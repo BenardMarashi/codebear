@@ -173,10 +173,7 @@ const PricingCard = ({ plan, index, t }: { plan: PricingPlan; index: number; t: 
             <span 
               className="text-5xl font-bold"
               style={{
-                background: 'linear-gradient(135deg, #D8420E 0%, #F38268 50%, #46A684 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#D8420E',
                 fontFamily: "'Outfit', sans-serif"
               }}
             >
@@ -317,7 +314,7 @@ export default function Pricing() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #D8420E 0%, #F38268 50%, #46A684 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #FF8C5A 50%, #FFFFFF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'

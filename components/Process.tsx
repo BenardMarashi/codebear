@@ -284,8 +284,10 @@ const UpdatingStatus = memo(() => {
             cy="50"
             r="45"
             fill="none"
-            stroke="rgba(13, 37, 86, 0.3)"
+            stroke="rgb(216, 66, 14)"
             strokeWidth="8"
+            strokeDasharray="70 210"
+            strokeLinecap="round"
           />
           <circle
             cx="50"
@@ -369,15 +371,6 @@ const ProcessCard = memo(({ step, index, isInView }: any) => {
           </div>
         </div>
       </motion.div>
-
-      {index < 2 && (
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={isInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: index * 0.2 + 0.6 }}
-          className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-[#D8420E]/50 to-[#D8420E]/50 origin-left"
-        />
-      )}
     </motion.div>
   );
 });
