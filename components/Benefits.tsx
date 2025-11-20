@@ -96,7 +96,7 @@ const BenefitCard = memo(({ benefit, index, isInView, t }: any) => {
             <div 
               className="text-6xl font-bold mb-2"
               style={{
-                background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
+                background: 'linear-gradient(135deg, #D8420E 0%, #FF8C5A 50%, #FFFFFF 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -214,7 +214,7 @@ export default function Benefits() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #FF8C5A 50%, #FFFFFF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -270,7 +270,7 @@ export default function Benefits() {
                 <div 
                   className="text-5xl lg:text-6xl font-bold mb-3"
                   style={{
-                    background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
+                    background: 'linear-gradient(135deg, #D8420E 0%, #FF8C5A 50%, #FFFFFF 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',

@@ -473,7 +473,7 @@ export default function Process() {
             }}
           >
             {t('title')} <span style={{
-              background: 'linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%)',
+              background: 'linear-gradient(135deg, #D8420E 0%, #FF8C5A 50%, #FFFFFF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'

@@ -38,7 +38,7 @@ body {
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #D8420E 0%, #0D2556 50%, #FFFFFF 100%);
+    background-image: linear-gradient(135deg, #D8420E 0%, #FF6B3D 35%, #FFFFFF 100%);
   }
 
   .glass-effect {
